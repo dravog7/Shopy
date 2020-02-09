@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse,HttpResponse
 from account.models import shop
 from .models import announce
+import datetime
 # Create your views here.
 #search-
 #announcment-location
@@ -28,6 +29,7 @@ def search(request):
         'open',
         )
     result=[x for x in result]
+    processOpen(result)
     return JsonResponse(result,safe=False)
 
 def announcment(request):
@@ -51,3 +53,6 @@ def addAnnounce(request):
     ann = announce(shop=shop,description=desc)
     ann.save()
     return HttpResponse('1')
+
+def processOpen(res):
+    curr = datetime.datetime.now().time()
