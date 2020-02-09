@@ -63,7 +63,7 @@ def processOpen(res):
         if(i['curr_start']<=curr<=i['curr_end']):
             i['open']=True
         try:
-            elif(i['shop__curr_start']<=curr<=i['shop__curr_end']):
+            if(i['shop__curr_start']<=curr<=i['shop__curr_end']):
                 i['shop__open']=True
         except:
             pass
