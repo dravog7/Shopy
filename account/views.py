@@ -3,13 +3,14 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.http import HttpResponse
-from django.contrib.auth import logout
+from django.contrib.auth.views import logout
 from .models import shop
 def signin(request):
     username = request.GET['username']
     password = request.GET['password']
     user = authenticate(request, username=username,password=password)
     if user is not None:
+        login(request,user)
         return HttpResponse('1')
     else:
         return HttpResponse('0')
@@ -39,4 +40,3 @@ def signup(request):
 @login_required
 def signout(request):
     logout(request)
-    return HttpResponse('1')
