@@ -23,7 +23,9 @@ def signup(request):
     data['shop_name'] = request.GET['shop']
     data['sunday'] = request.GET['sunday']
     data['start_time'] = request.GET['start']
+    data['curr_start'] = data['start_time']
     data['end_time'] = request.GET['end']
+    data['curr_end'] = data['end_time']
     data['latitude'] = request.GET['lat']
     data['longtitude'] = request.GET['long']
 
