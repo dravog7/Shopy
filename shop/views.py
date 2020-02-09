@@ -13,7 +13,7 @@ def search(request):
     lat = int(request.GET['lat'])
     longt = int(request.GET['longt'])
     result = shop.objects.filter(
-        shop_name__contains=keyword,
+        shop_name__icontains=keyword,
         latitude__range=(lat-10,lat+10),
         longtitude__range=(longt-10,longt+10)
     )
