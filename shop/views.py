@@ -42,9 +42,9 @@ def announcment(request):
     result=result.values(
         'description',
         'shop__shop_name',
-        'curr_start',
-        'curr_end',
-        'open',
+        'shop__curr_start',
+        'shop__curr_end',
+        'shop__open',
     )
     result=[x for x in result]
     return JsonResponse(result,safe=False)
@@ -62,3 +62,5 @@ def processOpen(res):
     for i in res:
         if(i['curr_start']<=curr<=i['curr_end']):
             i['open']=True
+        elif(i['shop__curr_start']<=curr<=i['shop__curr_end']):
+            i['shop__open']=True
