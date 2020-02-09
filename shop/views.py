@@ -56,3 +56,6 @@ def addAnnounce(request):
 
 def processOpen(res):
     curr = datetime.datetime.now().time()
+    for i in res:
+        if(i.curr_start<=curr<=i.curr_end):
+            i.open=True
